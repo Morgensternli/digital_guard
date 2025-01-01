@@ -4,12 +4,13 @@ import db from '$lib/db.js';
 export const actions = {
     create: async ({request}) => {
       const data = await request.formData();
-      let movie = {
-        title: data.get('title'),
-        year: data.get('year'),
-        length: data.get('duration'),
+      let vertrauensperson = {
+        vorname: data.get('vorname'),
+        nachname: data.get('nachname'),
+        beziehung: data.get('beziehung'),
+        email: data.get('email'),
       };
-        movie = await db.createMovie(movie);
-        return movie;
+      vertrauensperson = await db.createVertrauensperson(vertrauensperson);
+        return vertrauensperson;
     }
   }

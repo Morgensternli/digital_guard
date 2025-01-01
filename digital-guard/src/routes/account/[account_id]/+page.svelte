@@ -1,12 +1,12 @@
 <script>
   export let data;
-  let movie = data.movie;
+  let account = data.account;
   import ".../styles.css";
 </script>
 
-<a href="/movies">Back</a>
+<a href="/account">Back</a>
 
-<h1>{movie.title}</h1>
+<h1>{account.title}</h1>
 <div class="row mt-3">
   <div class="col-3">
     <img class="img-fluid" src={movie.poster} alt="" />

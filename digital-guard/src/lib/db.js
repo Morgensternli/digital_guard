@@ -10,48 +10,52 @@ const db = client.db("ScreenStackDB"); // select database
 // Movies
 //////////////////////////////////////////
 
-// Get all movies
-async function getMovies() {
-  let movies = [];
+// Get all Vertrauenspersonen
+async function getVertrauenspersonen() {
+  let vertrauensperson = [];
   try {
-    const collection = db.collection("movies");
+    const collection = db.collection("vertrauenspersonen");
 
     // You can specify a query/filter here
     // See https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/query-document/
     const query = {};
 
     // Get all objects that match the query
-    movies = await collection.find(query).toArray();
-    movies.forEach((movie) => {
-      movie._id = movie._id.toString(); // convert ObjectId to String
+    vertrauensperson = await collection.find(query).toArray();
+    console.log("found vertrauenspersonen: " + vertrauensperson.length)
+    vertrauensperson.forEach((vertrauensperson) => {
+      vertrauensperson._id = vertrauensperson._id.toString(); // convert ObjectId to String
     });
+    console.log("found vertrauenspersonen: " + vertrauensperson.length)
+
   } catch (error) {
     console.log(error);
     // TODO: errorhandling
   }
-  return movies;
+  return vertrauensperson;
 }
 
-// Get movie by id
-async function getMovie(id) {
-  let movie = null;
+// Get account by id
+async function getAccount(id) {
+  let account = null;
   try {
-    const collection = db.collection("movies");
+    const collection = db.collection("accounts");
     const query = { _id: new ObjectId(id) }; // filter by id
-    movie = await collection.findOne(query);
+    accounts = await collection.findOne(query);
 
-    if (!movie) {
-      console.log("No movie with id " + id);
+    if (!accounts) {
+      console.log("No accounts with id " + id);
       // TODO: errorhandling
     } else {
-      movie._id = movie._id.toString(); // convert ObjectId to String
+      accounts._id = accounts._id.toString(); // convert ObjectId to String
     }
   } catch (error) {
     // TODO: errorhandling
     console.log(error.message);
   }
-  return movie;
+  return accounts;
 }
+
 
 // create movie
 // Example movie object:
@@ -66,6 +70,18 @@ async function createUser(user) {
   try {
     const collection = db.collection("user");
     const result = await collection.insertOne(user);
+    return result.insertedId.toString(); // convert ObjectId to String
+  } catch (error) {
+    // TODO: errorhandling
+    console.log(error.message);
+  }
+  return null;
+}
+
+async function createVertrauensperson(vertrauensperson) {
+  try {
+    const collection = db.collection("vertrauenspersonen");
+    const result = await collection.insertOne(vertrauensperson);
     return result.insertedId.toString(); // convert ObjectId to String
   } catch (error) {
     // TODO: errorhandling
@@ -114,18 +130,39 @@ async function updateMovie(movie) {
   return null;
 }
 
-// delete movie by id
-// returns: id of the deleted movie or null, if movie could not be deleted
-async function deleteMovie(id) {
+// delete vertrauensperson by id
+// returns: id of the deleted vertrauensperson or null, if vertrauensperson could not be deleted
+async function deleteVertrauensperson(id) {
   try {
-    const collection = db.collection("movies");
+    const collection = db.collection("vertrauenspersonen");
     const query = { _id: new ObjectId(id) }; // filter by id
     const result = await collection.deleteOne(query);
 
     if (result.deletedCount === 0) {
-      console.log("No movie with id " + id);
+      console.log("Keine vertrauensperson mit id " + id);
     } else {
-      console.log("Movie with id " + id + " has been successfully deleted.");
+      console.log("Vertrauensperson mit id " + id + " wurde erfolgreich gelöscht.");
+      return id;
+    }
+  } catch (error) {
+    // TODO: errorhandling
+    console.log(error.message);
+  }
+  return null;
+}
+
+// delete account by id
+// returns: id of the deleted accounts or null, if accounts could not be deleted
+async function deleteAccount(id) {
+  try {
+    const collection = db.collection("accounts");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    const result = await collection.deleteOne(query);
+
+    if (result.deletedCount === 0) {
+      console.log("No account with id " + id);
+    } else {
+      console.log("Account with id " + id + " has been successfully deleted.");
       return id;
     }
   } catch (error) {
@@ -137,9 +174,10 @@ async function deleteMovie(id) {
 
 // export all functions so that they can be used in other files
 export default {
-  getMovies,
-  getMovie,
-  createMovie,
-  updateMovie,
-  deleteMovie,
+  deleteVertrauensperson,
+  deleteAccount,
+  getAccount,
+  getVertrauenspersonen,
+  createVertrauensperson,
+  createUser,
 };

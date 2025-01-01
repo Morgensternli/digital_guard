@@ -38,20 +38,20 @@
 
     <div class="card">
       <h2>Neue Person hinzufügen</h2>
-      <form>
+      <form method="POST" action="?/create">
         <div class="form-group">
           <label>Vorname</label>
-          <input type="text" required>
+          <input type="text" name = "vorname" required>
         </div>
 
         <div class="form-group">
           <label>Nachname</label>
-          <input type="text" required>
+          <input type="text"name = "nachname"  required>
         </div>
 
         <div class="form-group">
           <label>Beziehung</label>
-          <select required>
+          <select required name = "beziehung" >
             <option value="">Bitte wählen...</option>
             <option value="mother">Mutter</option>
             <option value="father">Vater</option>
@@ -63,7 +63,7 @@
 
         <div class="form-group">
           <label>E-Mail</label>
-          <input type="email" required>
+          <input type="email"name = "email"  required>
         </div>
 
         <button type="submit" class="submit-button">Person hinzufügen</button>

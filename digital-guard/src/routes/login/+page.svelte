@@ -1,12 +1,7 @@
 <script>
   import "./styles.css";
+  // braucht es für den rückgabewert
   let { form } = $props();
-  let account = $state({
-    vorname: "",
-    nachname: "",
-    email: "",
-    password: "",
-  });
 </script>
 
 <div class="container">
@@ -39,7 +34,7 @@
 
   <div class="form-section">
     <h2>Registrierung</h2>
-    <form>
+    <form method="POST" action="?/create">
       <div class="form-grid">
         <div class="form-group">
           <label for="firstname">Vorname</label>
@@ -47,7 +42,6 @@
             vorname="vorname"
             class="form-control"
             type="text"
-            bind:value={account.vorname}
             required
           />
         </div>
@@ -58,7 +52,6 @@
             nachname="nachname"
             class="form-control"
             type="text"
-            bind:value={account.nachname}
             required
           />
         </div>
@@ -70,7 +63,6 @@
           email="email"
           class="form-control"
           type="email"
-          bind:value={account.email}
           required
         />
       </div>
@@ -81,7 +73,6 @@
           password="password"
           class="form-control"
           type="password"
-          bind:value={account.password}
           required
         />
       </div>

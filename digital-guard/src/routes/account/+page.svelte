@@ -1,5 +1,4 @@
 <script>
-  import MovieCard from "$lib/components/MovieCard.svelte";
   let { data, filterByWatchlist = false } = $props();
 
   //let movies = $derived(data.movies);
