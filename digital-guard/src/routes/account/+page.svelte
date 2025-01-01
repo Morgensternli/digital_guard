@@ -1,37 +1,37 @@
 <script>
-  let { data, filterByWatchlist = false } = $props();
+  import "./styles.css";
+  let { data, filterByFavorite = false } = $props();
 
-  //let movies = $derived(data.movies);
-
-  let movies = $derived.by(() => {
-    if (filterByWatchlist) {
-      let moviesFiltered = data.movies.filter((movie) => movie.watchlist);
-      return moviesFiltered;
+  let accounts = $derived.by(() => {
+    if (filterByFavorite) {
+      let accountFiltered = data.accounts.filter((account) => account.favorit);
+      return accountFiltered;
     }
-    return data.movies;
+    return data.accounts;
   });
 </script>
 
 
-<div>
-  <a href="/movies/create" class="btn btn-primary">Add New Movie</a>
-</div>
+<div class="header">
+  <h1>Meine Accounts</h1>
+  <a href="/account/create" class="btn btn-primary">Account Hinzufügen</a>
 <!-- See https://getbootstrap.com/docs/5.0/forms/checks-radios/ -->
 <div class="form-check mt-3">
   <input
     class="form-check-input"
     type="checkbox"
     id="filter"
-    bind:checked={filterByWatchlist}
+    bind:checked={filterByFavorite}
   />
   <label class="form-check-label" for="filter">
-    Show only movies on watchlist
+    Nur Favoriten anzeigen
   </label>
 </div>
+</div>
 <div class="row mt-3">
-  {#each movies as movie}
+  {#each accounts as account}
     <div class="col-sm-6 col-md-4 col-lg-3 mb-2 gx-2">
-      <MovieCard {movie}></MovieCard>
+      <AccountCard {account}></AccountCard>
     </div>
   {/each}
 </div>

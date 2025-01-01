@@ -12,9 +12,11 @@ export const actions = {
   create: async ({ request }) => {
     const data = await request.formData();
     let account = {
-      title: data.get("name"),
-      year: data.get("year"),
-      length: data.get("length"),
+      benennung: data.get("titel"),
+      accountname: data.get("accountname"),
+      passwort: data.get("passwort"),
+      webseite: data.get("webseite"),
+      favorite: false,
     };
     await db.createAccount(account);
     return { success: true };

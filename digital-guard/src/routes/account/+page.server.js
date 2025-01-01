@@ -2,27 +2,27 @@ import db from "$lib/db.js";
 
 export async function load() {
   return {
-    movies: await db.getMovies()
+    account: await db.getAccount()
   };
 }
 
 export const actions = {
-  addToWatchlist: async ({request}) => {
+  addToFavorite: async ({request}) => {
     let data = await request.formData();
     let id = data.get("id");
-    let movie = { 
+    let account = { 
       _id: id,
-      watchlist: true
+      favorite: true
     } 
-    await db.updateMovie(movie);
+    await db.updateAccount(account);
   },
-  removeFromWatchlist: async ({request}) => {
+  removeFromFavorite: async ({request}) => {
     let data = await request.formData();
     let id = data.get("id");
-    let movie = { 
+    let account = { 
       _id: id,
-      watchlist: false
+      favorite: false
     } 
-    await db.updateMovie(movie);
+    await db.updateAccount(account);
   }
 }

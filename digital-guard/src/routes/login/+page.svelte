@@ -6,7 +6,7 @@
 
 <div class="container">
   <a
-    href="/movies"
+    href="/"
     class="text-primary text-decoration-none mb-4 d-inline-block">Zurück</a>
   <h1>Registriere dich für Digital Guard</h1>
   <div class="info-section">
@@ -39,7 +39,7 @@
         <div class="form-group">
           <label for="firstname">Vorname</label>
           <input
-            vorname="vorname"
+            name="vorname"
             class="form-control"
             type="text"
             required
@@ -49,7 +49,7 @@
         <div class="form-group">
           <label for="lastname">Nachname</label>
           <input
-            nachname="nachname"
+          name="nachname"
             class="form-control"
             type="text"
             required
@@ -60,7 +60,7 @@
       <div class="form-group">
         <label for="email">E-Mail Adresse</label>
         <input
-          email="email"
+        name="email"
           class="form-control"
           type="email"
           required
@@ -70,7 +70,7 @@
       <div class="form-group">
         <label for="password">Passwort</label>
         <input
-          password="password"
+        name="password"
           class="form-control"
           type="password"
           required
@@ -79,7 +79,7 @@
 
       <div class="form-group">
         <label for="password-confirm">Passwort wiederholen</label>
-        <input type="password" id="password-confirm" required />
+        <input class="form-control" type="password" id="password-confirm" required />
       </div>
 
       <div class="form-footer">

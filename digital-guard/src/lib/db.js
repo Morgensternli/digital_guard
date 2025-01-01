@@ -89,6 +89,18 @@ async function createVertrauensperson(vertrauensperson) {
   }
   return null;
 }
+async function createAccount(account) {
+  try {
+    const collection = db.collection("accounts");
+    const result = await collection.insertOne(account);
+    return result.insertedId.toString(); // convert ObjectId to String
+  } catch (error) {
+    // TODO: errorhandling
+    console.log(error.message);
+  }
+  return null;
+}
+
 
 // update movie
 // Example movie object:
@@ -108,19 +120,19 @@ async function createVertrauensperson(vertrauensperson) {
 } 
 */
 // returns: id of the updated movie or null, if movie could not be updated
-async function updateMovie(movie) {
+async function updateAccount(Account) {
   try {
-    let id = movie._id;
-    delete movie._id; // delete the _id from the object, because the _id cannot be updated
-    const collection = db.collection("movies");
+    let id = account._id;
+    delete account._id; // delete the _id from the object, because the _id cannot be updated
+    const collection = db.collection("accounts");
     const query = { _id: new ObjectId(id) }; // filter by id
-    const result = await collection.updateOne(query, { $set: movie });
+    const result = await collection.updateOne(query, { $set: account });
 
     if (result.matchedCount === 0) {
-      console.log("No movie with id " + id);
+      console.log("No account with id " + id);
       // TODO: errorhandling
     } else {
-      console.log("Movie with id " + id + " has been updated.");
+      console.log("Account with id " + id + " has been updated.");
       return id;
     }
   } catch (error) {
@@ -174,9 +186,11 @@ async function deleteAccount(id) {
 
 // export all functions so that they can be used in other files
 export default {
-  deleteVertrauensperson,
+  updateAccount,
   deleteAccount,
   getAccount,
+  createAccount,
+  deleteVertrauensperson,
   getVertrauenspersonen,
   createVertrauensperson,
   createUser,

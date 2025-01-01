@@ -63,7 +63,7 @@
 
         <div class="form-group">
           <label>E-Mail</label>
-          <input type="email"name = "email"  required>
+          <input type="email" name = "vorname"  required>
         </div>
 
         <button type="submit" class="submit-button">Person hinzufügen</button>

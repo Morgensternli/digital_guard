@@ -5,14 +5,19 @@
 <a
     href="/account"
     class="text-primary text-decoration-none mb-4 d-inline-block">Zurück</a>
-<h1>Füge einen neuen Account hinzu</h1>
+<h1>Neuer Account hinzufügen</h1>
 <form method="POST" action="?/create">
   <div class="mb-3">
+    <label for="" class="form-label">Bennenung</label>
+    <input name="titel" class="form-control" type="text" />
+  </div>
+  <div class="mb-3">
     <label for="" class="form-label">Benutzername</label>
-    <input name="accountname" class="form-control" type="text" />
+    <input name="accountname" class="form-control" type="text"/>
   </div>
   <div class="mb-3">
     <label for="" class="form-label">Passwort</label>
+    
     <input name="passwort" class="form-control" type="text" />
   </div>
   <div class="mb-3">
@@ -32,4 +37,6 @@
   <button type="submit" class="btn btn-primary">Hinzufügen</button>
 </form>
 
-
+{#if data?.success}
+  <p>Account erfolgreich hinzugefügt!</p>
+{/if}
