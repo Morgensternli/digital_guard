@@ -13,7 +13,7 @@
   });
 </script>
 
-<p><i>Daten und Bilder generiert mit ChatGPT und DALL-E</i></p>
+
 <div>
   <a href="/movies/create" class="btn btn-primary">Add New Movie</a>
 </div>

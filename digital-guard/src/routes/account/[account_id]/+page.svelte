@@ -1,6 +1,7 @@
 <script>
   export let data;
   let movie = data.movie;
+  import ".../styles.css";
 </script>
 
 <a href="/movies">Back</a>

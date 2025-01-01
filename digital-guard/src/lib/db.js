@@ -62,13 +62,10 @@ async function getMovie(id) {
   length: "120 Minuten"
 } 
 */
-async function createMovie(movie) {
-  movie.poster = "/images/placeholder.jpg"; // default poster
-  movie.actors = [];
-  movie.watchlist = false;
+async function createUser(user) {
   try {
-    const collection = db.collection("movies");
-    const result = await collection.insertOne(movie);
+    const collection = db.collection("user");
+    const result = await collection.insertOne(user);
     return result.insertedId.toString(); // convert ObjectId to String
   } catch (error) {
     // TODO: errorhandling
