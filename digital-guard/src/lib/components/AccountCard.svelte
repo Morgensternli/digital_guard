@@ -3,12 +3,12 @@
   let { account } = $props();
 </script>
 
-<div class="account-card">
-  <div class="details">
-    <div class="title">
-      <a href={"/account/" + account._id}>{account.titel}</a>
+<div class="feature-card">
+  <div class="card text-dark bg-light mb-3">
+    <div class="card-header">
+      <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href={"/account/" + account._id}>{account.benennung}</a>
     </div>
-    <div>
+    <div class="card-body">
       Benutzer: {account.accountname}
     </div>
     <div>
@@ -20,24 +20,18 @@
     {#if account.favorite}
     <form method="POST" action="?/removeFromFavorite" use:enhance>
         <input type="hidden" name="id" value={account._id} />
-        <button class="btn btn-danger">Von Favoriten entfernen</button>
+        <button class="btn btn-outline-warning">Von Favoriten entfernen</button>
     </form>
     {:else}
       <form method="POST" action="?/addToFavorite" use:enhance>
         <input type="hidden" name="id" value={account._id} />
-        <button class="btn btn-success">Als Favorit hinzufügen</button>
+        <button class="btn btn-outline-secondary">Als Favorit hinzufügen</button>
       </form>
     {/if}
   </div>
 </div>
 
 <style>
-  .account-card {
-    border: 1px solid #e4e2bc;
-    height: 100%;
-    background-color: #adadf2;
-    color: white;
-  }
   .details {
     padding: 0.5em;
   }

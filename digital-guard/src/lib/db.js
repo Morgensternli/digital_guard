@@ -68,19 +68,19 @@ async function getAccount(id) {
   try {
     const collection = db.collection("accounts");
     const query = { _id: new ObjectId(id) }; // filter by id
-    accounts = await collection.findOne(query);
+    account = await collection.findOne(query);
 
-    if (!accounts) {
-      console.log("No accounts with id " + id);
+    if (!account) {
+      console.log("No account with id " + id);
       // TODO: errorhandling
     } else {
-      accounts._id = accounts._id.toString(); // convert ObjectId to String
+      account._id = account._id.toString(); // convert ObjectId to String
     }
   } catch (error) {
     // TODO: errorhandling
     console.log(error.message);
   }
-  return accounts;
+  return account;
 }
 
 async function getVertrauensperson(id) {

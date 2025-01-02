@@ -22,9 +22,7 @@ export const actions = {
   },
   delete: async ({ request }) => {
     const data = await request.formData();
-
     await db.deleteVertrauensperson(data.get("id"));
     redirect(303, "/vertrauenspersonen");
-
   },
 }

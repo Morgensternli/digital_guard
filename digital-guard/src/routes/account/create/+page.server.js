@@ -1,4 +1,6 @@
 import db from "$lib/db.js";
+import { redirect } from "@sveltejs/kit";
+
 
 export async function load() {
   const vertrauenspersonen = await db.getVertrauenspersonen();
@@ -20,6 +22,6 @@ export const actions = {
       favorite: false,
     };
     await db.createAccount(account);
-    return { success: true };
+    redirect(303, "/account");
   },
 };

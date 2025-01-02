@@ -36,6 +36,3 @@
   <button type="submit" class="btn btn-primary">Hinzufügen</button>
 </form>
 
-{#if data?.success}
-  <p>Account erfolgreich hinzugefügt!</p>
-{/if}
