@@ -35,6 +35,33 @@ async function getVertrauenspersonen() {
   return vertrauensperson;
 }
 
+async function getAccounts() {
+  let accounts = [];
+  try {
+    const collection = db.collection("accounts");
+
+    // You can specify a query/filter here
+    // See https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/query-document/
+    const query = {};
+
+    // Get all objects that match the query
+    accounts = await collection.find(query).toArray();
+    console.log("found account: " + accounts.length)
+    accounts.forEach((account) => {
+      account._id = account._id.toString(); // convert ObjectId to String
+    });
+    for (const account of accounts){
+      account.vertrauensperson = await getVertrauensperson(account.vertrauensperson)
+    }
+    console.log("found account: " + accounts.length)
+
+  } catch (error) {
+    console.log(error);
+    // TODO: errorhandling
+  }
+  return accounts;
+}
+
 // Get account by id
 async function getAccount(id) {
   let account = null;
@@ -54,6 +81,26 @@ async function getAccount(id) {
     console.log(error.message);
   }
   return accounts;
+}
+
+async function getVertrauensperson(id) {
+  let vertrauensperson = null;
+  try {
+    const collection = db.collection("vertrauenspersonen");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    vertrauensperson = await collection.findOne(query);
+
+    if (!vertrauensperson) {
+      console.log("No vertrauensperson with id " + id);
+      // TODO: errorhandling
+    } else {
+      vertrauensperson._id = vertrauensperson._id.toString(); // convert ObjectId to String
+    }
+  } catch (error) {
+    // TODO: errorhandling
+    console.log(error.message);
+  }
+  return vertrauensperson;
 }
 
 
@@ -120,7 +167,7 @@ async function createAccount(account) {
 } 
 */
 // returns: id of the updated movie or null, if movie could not be updated
-async function updateAccount(Account) {
+async function updateAccount(account) {
   try {
     let id = account._id;
     delete account._id; // delete the _id from the object, because the _id cannot be updated
@@ -187,11 +234,13 @@ async function deleteAccount(id) {
 // export all functions so that they can be used in other files
 export default {
   updateAccount,
+  getAccounts,
   deleteAccount,
   getAccount,
   createAccount,
   deleteVertrauensperson,
   getVertrauenspersonen,
+  getVertrauensperson,
   createVertrauensperson,
   createUser,
 };

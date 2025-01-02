@@ -17,8 +17,7 @@
   </div>
   <div class="mb-3">
     <label for="" class="form-label">Passwort</label>
-    
-    <input name="passwort" class="form-control" type="text" />
+    <input name="passwort" class="form-control" type="password" />
   </div>
   <div class="mb-3">
     <label for="" class="form-label">Webseite</label>

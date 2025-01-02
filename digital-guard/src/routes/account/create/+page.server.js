@@ -16,6 +16,7 @@ export const actions = {
       accountname: data.get("accountname"),
       passwort: data.get("passwort"),
       webseite: data.get("webseite"),
+      vertrauensperson: data.get("beziehung"),
       favorite: false,
     };
     await db.createAccount(account);

@@ -2,7 +2,7 @@ import db from "$lib/db.js";
 
 export async function load() {
   return {
-    account: await db.getAccount()
+    accounts: await db.getAccounts()
   };
 }
 
@@ -24,5 +24,5 @@ export const actions = {
       favorite: false
     } 
     await db.updateAccount(account);
-  }
+  },
 }

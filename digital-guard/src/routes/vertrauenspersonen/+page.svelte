@@ -1,6 +1,9 @@
 
 <script>
-  import "./styles.css";
+  import TrustCard from "$lib/components/TrustCard.svelte";
+import "./styles.css";
+  export let data;
+  let vertrauenspersonen = data.vertrauenspersonen;
 </script>
 
 <div class="container">
@@ -12,29 +15,12 @@
   <div class="grid-layout">
     <div class="card">
       <h2>Ihre Vertrauenspersonen</h2>
-      
-      <div class="trusted-person">
-        <div class="person-avatar">MM</div>
-        <div class="person-info">
-          <div class="person-name">Maria Muster</div>
-          <div class="person-relation">Mutter</div>
-        </div>
-        <div class="action-buttons">
-          <button class="btn btn-delete">Entfernen</button>
-        </div>
+    
+      {#each vertrauenspersonen as vertrauensperson}
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-2 gx-2">
+        <TrustCard {vertrauensperson}></TrustCard>
       </div>
-
-      <div class="trusted-person">
-        <div class="person-avatar">PM</div>
-        <div class="person-info">
-          <div class="person-name">Peter Muster</div>
-          <div class="person-relation">Vater</div>
-        </div>
-        <div class="action-buttons">
-          <button class="btn btn-delete">Entfernen</button>
-        </div>
-      </div>
-    </div>
+    {/each}
 
     <div class="card">
       <h2>Neue Person hinzufügen</h2>
@@ -70,4 +56,5 @@
       </form>
     </div>
   </div>
+</div>
 </div>

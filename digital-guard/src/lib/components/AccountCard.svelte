@@ -9,13 +9,13 @@
       <a href={"/account/" + account._id}>{account.titel}</a>
     </div>
     <div>
-      Benutzer: {account.name}
+      Benutzer: {account.accountname}
     </div>
     <div>
       Webseite: {account.webseite}
     </div>
     <div>
-      vertrauensperson: {account.vertrauensperson}
+      vertrauensperson: {account.vertrauensperson.vorname} {account.vertrauensperson.nachname}
     </div>
     {#if account.favorite}
     <form method="POST" action="?/removeFromFavorite" use:enhance>
