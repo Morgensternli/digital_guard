@@ -11,7 +11,7 @@
     <p>
       Verwalten Sie hier Ihre Vertrauenspersonen für den digitalen Nachlass.
     </p>
-    <p>ACHTUNG! Lösche zuerst alle Accounts mit dieser Vertrauensperson!</p>
+    <strong>ACHTUNG! Lösche zuerst alle Accounts mit dieser Vertrauensperson!</strong>
   </div>
 
   <div class="grid-layout">

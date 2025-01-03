@@ -4,6 +4,7 @@
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-dark custom-bg">
+  <img src="/image/digitalguard.png" alt="" class="image">
   <a class="navbar-brand" href="/">Digital Guard</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

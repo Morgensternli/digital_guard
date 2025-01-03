@@ -7,10 +7,10 @@
   <div class="person-avatar">{vertrauensperson.vorname.substring(0,1)}{vertrauensperson.nachname.substring(0,1)}</div>
   <div class="person-info">
     <div class="person-name">
-      Vertrauensperson: {vertrauensperson.vorname} {vertrauensperson.nachname}
+      {vertrauensperson.vorname} {vertrauensperson.nachname}
     </div>
     <div class="person-relation">
-      Benutzer: {vertrauensperson.beziehung}
+      Beziehung: {vertrauensperson.beziehung}
     </div>
   </div>
   <form method="POST" action="?/delete" >

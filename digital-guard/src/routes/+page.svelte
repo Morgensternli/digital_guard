@@ -3,6 +3,12 @@
     <p>In einer Welt, in der unser digitales Leben immer mehr an Bedeutung gewinnt, stellen wir die Frage: Was passiert mit Ihren Daten, Konten und digitalen Besitztümern, wenn Sie einmal nicht mehr da sind?</p>
 </div>
 
+<div class="video-section">
+  <video controls width="100%" autoplay muted>
+      <source src="/video/intro.mp4" type="video/mp4" />
+  </video>
+</div>
+
 <div class="features">
     <div class="feature-card">
       <div class="feature-icon">🔐</div>

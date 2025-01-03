@@ -74,6 +74,25 @@
   line-height: 1.6;
 }
 
+.video-section {
+  padding: 2rem;
+  text-align: center;
+}
+
+.video-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.video-section video {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
 .cta-section {
   background: #f1f3f9;
   padding: 4rem 2rem;
@@ -93,4 +112,11 @@
 
 .cta-button:hover {
   background: #303f9f;
+}
+
+.image {
+  padding: 5px;
+  width:50px;
+  border-radius: 50px;
+  height: auto;
 }
