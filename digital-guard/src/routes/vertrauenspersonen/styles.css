@@ -66,15 +66,6 @@ h1 {
   font-size: 0.9rem;
 }
 
-
-.btn {
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
 .form-group {
   margin-bottom: 1.5rem;
 }
@@ -94,12 +85,6 @@ select {
   font-size: 1rem;
 }
 
-input:focus,
-select:focus {
-  outline: none;
-  border-color: #1a237e;
-}
-
 .submit-button {
   background: #1a237e;
   color: white;
@@ -113,10 +98,4 @@ select:focus {
 
 .submit-button:hover {
   background: #303f9f;
-}
-
-@media (max-width: 700px) {
-  .grid-layout {
-    grid-template-columns: 1fr;
-  }
 }

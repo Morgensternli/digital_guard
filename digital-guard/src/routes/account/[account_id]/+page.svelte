@@ -22,7 +22,7 @@
       </div>
       <div class="mb-3">
         <label for="" class="form-label">Passwort</label>
-        <input value={data.account.passwort}  name="passwort" class="form-control" type="password" />
+        <input value={data.account.passwort}  name="passwort" class="form-control" />
       </div>
       <div class="mb-3">
         <label for="" class="form-label">Webseite</label>

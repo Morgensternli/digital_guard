@@ -1,6 +1,5 @@
 <script>
   import "./styles.css";
-  // braucht es für den rückgabewert
   let { form } = $props();
 </script>
 
@@ -38,7 +37,7 @@
       <p class="text-success">Erfolgreich registriert!</p>
     {/if}
     <form method="POST" action="?/create">
-      <div class="form-grid">
+      <div class="signup-grid">
         <div class="form-group">
           <label for="firstname">Vorname</label>
           <input name="vorname" class="form-control" type="text" required />

@@ -1,30 +1,26 @@
-import { MongoClient, ObjectId } from "mongodb"; // See https://www.mongodb.com/docs/drivers/node/current/quick-start/
+import { MongoClient, ObjectId } from "mongodb";
 import { DB_URI } from "$env/static/private";
 
 const client = new MongoClient(DB_URI);
 
 await client.connect();
-const db = client.db("ScreenStackDB"); // select database
+const db = client.db("ScreenStackDB");
 
 //////////////////////////////////////////
-// Movies
+// Digital Guard
 //////////////////////////////////////////
 
-// Get all Vertrauenspersonen
+// Get all VP
 async function getVertrauenspersonen() {
   let vertrauensperson = [];
   try {
     const collection = db.collection("vertrauenspersonen");
 
-    // You can specify a query/filter here
-    // See https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/query-document/
     const query = {};
-
-    // Get all objects that match the query
     vertrauensperson = await collection.find(query).toArray();
     console.log("found vertrauenspersonen: " + vertrauensperson.length)
     vertrauensperson.forEach((vertrauensperson) => {
-      vertrauensperson._id = vertrauensperson._id.toString(); // convert ObjectId to String
+      vertrauensperson._id = vertrauensperson._id.toString();
     });
     console.log("found vertrauenspersonen: " + vertrauensperson.length)
 
@@ -35,20 +31,17 @@ async function getVertrauenspersonen() {
   return vertrauensperson;
 }
 
+// Get all Accounts
 async function getAccounts() {
   let accounts = [];
   try {
     const collection = db.collection("accounts");
 
-    // You can specify a query/filter here
-    // See https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/query-document/
     const query = {};
-
-    // Get all objects that match the query
     accounts = await collection.find(query).toArray();
     console.log("found account: " + accounts.length)
     accounts.forEach((account) => {
-      account._id = account._id.toString(); // convert ObjectId to String
+      account._id = account._id.toString();
     });
     for (const account of accounts){
       account.vertrauensperson = await getVertrauensperson(account.vertrauensperson)
@@ -67,14 +60,14 @@ async function getAccount(id) {
   let account = null;
   try {
     const collection = db.collection("accounts");
-    const query = { _id: new ObjectId(id) }; // filter by id
+    const query = { _id: new ObjectId(id) };
     account = await collection.findOne(query);
 
     if (!account) {
       console.log("No account with id " + id);
       // TODO: errorhandling
     } else {
-      account._id = account._id.toString(); // convert ObjectId to String
+      account._id = account._id.toString();
     }
   } catch (error) {
     // TODO: errorhandling
@@ -83,18 +76,19 @@ async function getAccount(id) {
   return account;
 }
 
+// Get VP by id
 async function getVertrauensperson(id) {
   let vertrauensperson = null;
   try {
     const collection = db.collection("vertrauenspersonen");
-    const query = { _id: new ObjectId(id) }; // filter by id
+    const query = { _id: new ObjectId(id) };
     vertrauensperson = await collection.findOne(query);
 
     if (!vertrauensperson) {
       console.log("No vertrauensperson with id " + id);
       // TODO: errorhandling
     } else {
-      vertrauensperson._id = vertrauensperson._id.toString(); // convert ObjectId to String
+      vertrauensperson._id = vertrauensperson._id.toString();
     }
   } catch (error) {
     // TODO: errorhandling
@@ -103,21 +97,12 @@ async function getVertrauensperson(id) {
   return vertrauensperson;
 }
 
-
-// create movie
-// Example movie object:
-/* 
-{ 
-  title: "Das Geheimnis von Altura",
-  year: 2024,
-  length: "120 Minuten"
-} 
-*/
+// create a User
 async function createUser(user) {
   try {
     const collection = db.collection("user");
     const result = await collection.insertOne(user);
-    return result.insertedId.toString(); // convert ObjectId to String
+    return result.insertedId.toString();
   } catch (error) {
     // TODO: errorhandling
     console.log(error.message);
@@ -125,22 +110,25 @@ async function createUser(user) {
   return null;
 }
 
+// create a VP
 async function createVertrauensperson(vertrauensperson) {
   try {
     const collection = db.collection("vertrauenspersonen");
     const result = await collection.insertOne(vertrauensperson);
-    return result.insertedId.toString(); // convert ObjectId to String
+    return result.insertedId.toString();
   } catch (error) {
     // TODO: errorhandling
     console.log(error.message);
   }
   return null;
 }
+
+// create a Account
 async function createAccount(account) {
   try {
     const collection = db.collection("accounts");
     const result = await collection.insertOne(account);
-    return result.insertedId.toString(); // convert ObjectId to String
+    return result.insertedId.toString();
   } catch (error) {
     // TODO: errorhandling
     console.log(error.message);
@@ -149,30 +137,13 @@ async function createAccount(account) {
 }
 
 
-// update movie
-// Example movie object:
-/* 
-{ 
-  _id: "6630e72c95e12055f661ff13",
-  title: "Das Geheimnis von Altura",
-  year: 2024,
-  length: "120 Minuten",
-  actors: [
-    "Lena Herzog",
-    "Maximilian Schröder",
-    "Sophia Neumann"
-  ],
-  poster: "/images/Altura.png",
-  watchlist: false
-} 
-*/
-// returns: id of the updated movie or null, if movie could not be updated
+// update Account
 async function updateAccount(account) {
   try {
     let id = account._id;
-    delete account._id; // delete the _id from the object, because the _id cannot be updated
+    delete account._id;
     const collection = db.collection("accounts");
-    const query = { _id: new ObjectId(id) }; // filter by id
+    const query = { _id: new ObjectId(id) };
     const result = await collection.updateOne(query, { $set: account });
 
     if (result.matchedCount === 0) {
@@ -189,12 +160,11 @@ async function updateAccount(account) {
   return null;
 }
 
-// delete vertrauensperson by id
-// returns: id of the deleted vertrauensperson or null, if vertrauensperson could not be deleted
+// delete VP by id
 async function deleteVertrauensperson(id) {
   try {
     const collection = db.collection("vertrauenspersonen");
-    const query = { _id: new ObjectId(id) }; // filter by id
+    const query = { _id: new ObjectId(id) };
     const result = await collection.deleteOne(query);
 
     if (result.deletedCount === 0) {
@@ -210,12 +180,11 @@ async function deleteVertrauensperson(id) {
   return null;
 }
 
-// delete account by id
-// returns: id of the deleted accounts or null, if accounts could not be deleted
+// delete Account by id
 async function deleteAccount(id) {
   try {
     const collection = db.collection("accounts");
-    const query = { _id: new ObjectId(id) }; // filter by id
+    const query = { _id: new ObjectId(id) };
     const result = await collection.deleteOne(query);
 
     if (result.deletedCount === 0) {
@@ -231,11 +200,10 @@ async function deleteAccount(id) {
   return null;
 }
 
-// export all functions so that they can be used in other files
 export default {
   updateAccount,
-  getAccounts,
   deleteAccount,
+  getAccounts,
   getAccount,
   createAccount,
   deleteVertrauensperson,
