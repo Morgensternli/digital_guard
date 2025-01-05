@@ -1,18 +1,40 @@
 <script>
   import "./styles.css";
-  let { form } = $props();
+  export let form;
+
+  let password = "";
+  let strength = "";
+
+  // Direkte Implementation der Passwort-Stärke-Prüfung
+  function calculatePasswordStrength(password) {
+    if (!password) return 'weak';
+
+    let score = 0;
+
+    if (password.length >= 8) score++;
+    if (/[A-Z]/.test(password)) score++;
+    if (/[a-z]/.test(password)) score++;
+    if (/\d/.test(password)) score++;
+    if (/[\W]/.test(password)) score++;
+
+    if (score <= 2) return 'weak';
+    if (score === 3) return 'medium';
+    return 'strong';
+  }
+
+  // Vereinfachte checkStrength Funktion
+  function checkStrength() {
+    strength = calculatePasswordStrength(password);
+  }
 </script>
 
 <div class="container">
-  <a href="/" class="text-primary text-decoration-none mb-4 d-inline-block"
-    >Zurück</a
-  >
+  <a href="/" class="text-primary text-decoration-none mb-4 d-inline-block">Zurück</a>
   <h1>Registriere dich für Digital Guard</h1>
   <div class="info-section">
     <h3>Sichern Sie Ihre digitale Zukunft</h3>
     <p>
-      Mit Digital Guard treffen Sie heute die richtigen Entscheidungen für
-      morgen.
+      Mit Digital Guard treffen Sie heute die richtigen Entscheidungen für morgen.
     </p>
 
     <div class="benefits">
@@ -56,17 +78,25 @@
 
       <div class="form-group">
         <label for="password">Passwort</label>
-        <input name="password" class="form-control" type="password" required />
-      </div>
-
-      <div class="form-group">
-        <label for="password-confirm">Passwort wiederholen</label>
         <input
+          name="password"
+          bind:value={password}
           class="form-control"
+          placeholder="Passwort eingeben"
+          on:input={checkStrength}
           type="password"
-          id="password-confirm"
           required
         />
+        <!-- Anzeige der Passwortstärke -->
+        {#if strength}
+          <div class="mt-2">
+            <p class:text-danger={strength === 'weak'}
+               class:text-warning={strength === 'medium'}
+               class:text-success={strength === 'strong'}>
+              Passwortstärke: {strength}
+            </p>
+          </div>
+        {/if}
       </div>
 
       <div class="form-footer">

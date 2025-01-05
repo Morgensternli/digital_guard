@@ -94,3 +94,13 @@ label {
 .submit-button:hover {
   background: #303f9f;
 }
+
+.text-danger {
+  color: red;
+}
+.text-warning {
+  color: orange;
+}
+.text-success {
+  color: green;
+}
