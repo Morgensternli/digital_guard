@@ -5,9 +5,8 @@
   let password = "";
   let strength = "";
 
-  // Direkte Implementation der Passwort-Stärke-Prüfung
   function calculatePasswordStrength(password) {
-    if (!password) return 'weak';
+    if (!password) return 'schwach';
 
     let score = 0;
 
@@ -17,19 +16,21 @@
     if (/\d/.test(password)) score++;
     if (/[\W]/.test(password)) score++;
 
-    if (score <= 2) return 'weak';
-    if (score === 3) return 'medium';
-    return 'strong';
+    if (score <= 2) return 'schwach';
+    if (score === 3) return 'mittel';
+    return 'stark';
   }
 
-  // Vereinfachte checkStrength Funktion
   function checkStrength() {
     strength = calculatePasswordStrength(password);
   }
 </script>
 
 <div class="container">
-  <a href="/" class="text-primary text-decoration-none mb-4 d-inline-block">Zurück</a>
+  <div>
+    <a href="/" class="btn btn-outline-dark" role="button" aria-pressed="true">Zurück</a>
+  </div>
+  
   <h1>Registriere dich für Digital Guard</h1>
   <div class="info-section">
     <h3>Sichern Sie Ihre digitale Zukunft</h3>
@@ -87,12 +88,11 @@
           type="password"
           required
         />
-        <!-- Anzeige der Passwortstärke -->
         {#if strength}
           <div class="mt-2">
-            <p class:text-danger={strength === 'weak'}
-               class:text-warning={strength === 'medium'}
-               class:text-success={strength === 'strong'}>
+            <p class:text-danger ={strength === 'schwach'}
+               class:text-warning ={strength === 'mittel'}
+               class:text-success ={strength === 'stark'}>
               Passwortstärke: {strength}
             </p>
           </div>
@@ -104,7 +104,7 @@
           <input type="checkbox" id="terms" required />
           <label for="terms">Ich akzeptiere die AGBs</label>
         </div>
-        <button type="submit" class="btn btn-primary">Registrieren</button>
+        <button type="submit" class="submit">Registrieren</button>
       </div>
     </form>
   </div>

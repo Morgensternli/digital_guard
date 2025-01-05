@@ -11,7 +11,9 @@
     <p>
       Verwalten Sie hier Ihre Vertrauenspersonen für den digitalen Nachlass.
     </p>
-    <strong>ACHTUNG! Lösche zuerst alle Accounts mit dieser Vertrauensperson!</strong>
+    <strong
+      >ACHTUNG! Lösche zuerst alle Accounts mit dieser Vertrauensperson!</strong
+    >
   </div>
 
   <div class="grid-layout">
@@ -24,21 +26,25 @@
       {/each}
     </div>
 
-      <div class="card">
-        <h2>Neue Person hinzufügen</h2>
-        <form method="POST" action="?/create">
-          <div class="form-group">
-            <label>Vorname</label>
+    <div class="card">
+      <h2>Neue Person hinzufügen</h2>
+      <form method="POST" action="?/create">
+        <div class="form-group">
+          <label>
+            Vorname
             <input type="text" name="vorname" required />
-          </div>
+          </label>
+        </div>
 
-          <div class="form-group">
-            <label>Nachname</label>
+        <div class="form-group">
+          <label>
+            Nachname
             <input type="text" name="nachname" required />
-          </div>
+          </label>
+        </div>
 
-          <div class="form-group">
-            <label>Beziehung</label>
+        <div class="form-group">
+          <label>Beziehung
             <select required name="beziehung">
               <option value="">Bitte wählen...</option>
               <option value="Mutter">Mutter</option>
@@ -47,15 +53,17 @@
               <option value="FreundIn">Freund/in</option>
               <option value="Sonstige">Sonstige</option>
             </select>
-          </div>
+          </label>
+        </div>
 
-          <div class="form-group">
-            <label>E-Mail</label>
+        <div class="form-group">
+          <label>E-Mail
             <input type="email" name="email" required />
-          </div>
+          </label>
+        </div>
 
-          <button type="submit" class="submit-button">Person hinzufügen</button>
-        </form>
-      </div>
+        <button type="submit" class="submit-button">Person hinzufügen</button>
+      </form>
+    </div>
   </div>
 </div>

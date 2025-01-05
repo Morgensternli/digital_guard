@@ -13,7 +13,7 @@
 
 <div class="header">
   <h1>Meine Accounts</h1>
-  <a href="/account/create" class="btn btn-primary">Account Hinzufügen</a>
+  <a href="/account/create" class="btn btn-primary">Account hinzufügen</a>
   <div class="form-check mt-3">
     <input
       class="form-check-input"

@@ -3,7 +3,7 @@ import { redirect } from "@sveltejs/kit";
 
 export async function load({ params }) {
   return {
-    account: await db.getAccount(params.account_id), // den param braucht es für einen bestimmtes objekt mit id
+    account: await db.getAccount(params.account_id),
   };
 }
 

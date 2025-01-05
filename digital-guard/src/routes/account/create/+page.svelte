@@ -2,9 +2,10 @@
   let { data } = $props();
 </script>
 
-<a
-    href="/account"
-    class="text-primary text-decoration-none mb-4 d-inline-block">Zurück</a>
+<div>
+  <a href="/account" class="btn btn-outline-dark" role="button" aria-pressed="true">Zurück</a>
+</div>
+
 <h1>Neuer Account hinzufügen</h1>
 <form method="POST" action="?/create">
   <div class="mb-3">
@@ -24,14 +25,15 @@
     <input name="webseite" class="form-control" type="text" />
   </div>
   <div class="mb-3">
-      <label>Vertrauensperson</label>
-      <select required name="beziehung">
-        {#each data?.vertrauenspersonen as vertrauensperson}
-        <option value={vertrauensperson._id}>
-          {vertrauensperson.vorname} {vertrauensperson.nachname}
-        </option>
-      {/each}
-      </select>
+      <label>Vertrauensperson
+        <select required name="beziehung">
+          {#each data?.vertrauenspersonen as vertrauensperson}
+          <option value={vertrauensperson._id}>
+            {vertrauensperson.vorname} {vertrauensperson.nachname}
+          </option>
+        {/each}
+        </select>
+      </label>
   </div>
   <button type="submit" class="btn btn-primary">Hinzufügen</button>
 </form>

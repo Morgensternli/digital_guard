@@ -3,6 +3,11 @@
     <p>In einer Welt, in der unser digitales Leben immer mehr an Bedeutung gewinnt, stellen wir die Frage: Was passiert mit Ihren Daten, Konten und digitalen Besitztümern, wenn Sie einmal nicht mehr da sind?</p>
 </div>
 
+<div class="cta-section">
+  <h2>Übernehmen Sie die Kontrolle über Ihre digitale Zukunft</h2>
+  <a href="/login" class="cta-button">Jetzt starten</a>
+</div>
+
 <div class="video-section">
   <video controls width="100%" autoplay muted>
       <source src="/video/intro.mp4" type="video/mp4" />
@@ -33,11 +38,4 @@
         <h3>Höchste Sicherheit</h3>
         <p>Schützen Sie Ihre Daten mit höchsten Sicherheitsstandards und bestimmen Sie vertrauenswürdige Personen.</p>
       </div>
-</div>
-
-
-<div class="cta-section">
-    <h2>Übernehmen Sie die Kontrolle über Ihre digitale Zukunft</h2>
-    <p>Mit Digital Guard.</p>
-    <a href="/login" class="cta-button">Jetzt starten</a>
 </div>

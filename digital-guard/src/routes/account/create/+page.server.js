@@ -4,7 +4,7 @@ import { redirect } from "@sveltejs/kit";
 
 export async function load() {
   const vertrauenspersonen = await db.getVertrauenspersonen();
-  console.log(vertrauenspersonen); // Debugging
+  console.log(vertrauenspersonen);
   return {
     vertrauenspersonen,
   };

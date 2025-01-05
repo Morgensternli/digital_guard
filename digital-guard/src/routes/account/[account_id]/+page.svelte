@@ -3,7 +3,9 @@
   let {data, form} = $props();
 </script>
 
-<a href="/account">Zurück</a>
+<div>
+  <a href="/account" class="btn btn-outline-dark" role="button" aria-pressed="true">Zurück</a>
+</div>
 
 <h1>{data.account.benennung}</h1>
 {#if form?.success}
