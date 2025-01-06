@@ -1,5 +1,4 @@
 <script>
-  import { enhance } from "$app/forms";
   let { vertrauensperson } = $props();
 </script>
 

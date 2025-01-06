@@ -4,7 +4,7 @@ import { redirect } from "@sveltejs/kit";
 
 export async function load({ params }) {
   return {
-    vertrauenspersonen: await db.getVertrauenspersonen(), // den param braucht es für einen bestimmtes objekt mit id
+    vertrauenspersonen: await db.getVertrauenspersonen(),
   };
 }
 
